@@ -72,8 +72,6 @@ public class ServerThread implements Runnable {
             System.out.println(this.clientNumber+" đã thoát");
             Server.serverThreadBus.sendOnlineList();
             Server.serverThreadBus.mutilCastSend("global-message"+","+"---Client "+this.clientNumber+" đã thoát---");
-            e.printStackTrace();
-            e.printStackTrace();
         }
     }
     public void write(String message) throws IOException{

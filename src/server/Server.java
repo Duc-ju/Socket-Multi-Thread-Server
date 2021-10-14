@@ -51,7 +51,7 @@ public class Server {
                 socketOfServer = listener.accept();
                 ServerThread serverThread = new ServerThread(socketOfServer, clientNumber++);
                 serverThreadBus.add(serverThread);
-                System.out.println(serverThreadBus.getLength());
+                System.out.println("Số thread đang chạy là: "+serverThreadBus.getLength());
                 executor.execute(serverThread);
                 
             }

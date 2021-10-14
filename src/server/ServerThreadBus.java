@@ -53,7 +53,6 @@ public class ServerThreadBus {
         }
         for(ServerThread serverThread : threadbus){
             try {
-                System.out.println(res);
                 serverThread.getOs().write("update-online-list"+","+res);
                 serverThread.getOs().newLine();
                 serverThread.getOs().flush();
