@@ -51,7 +51,7 @@ public class ServerThread implements Runnable {
             System.out.println("Khời động luông mới thành công, ID là: " + clientNumber);
             write("get-id" + "," + this.clientNumber);
             Server.serverThreadBus.sendOnlineList();
-
+            Server.serverThreadBus.mutilCastSend("global-message"+","+"---Client "+this.clientNumber+" đã đăng nhập---");
             String message;
             while (!isClosed) {
                 message = is.readLine();
@@ -71,6 +71,7 @@ public class ServerThread implements Runnable {
             Server.serverThreadBus.remove(clientNumber);
             System.out.println(this.clientNumber+" đã thoát");
             Server.serverThreadBus.sendOnlineList();
+            Server.serverThreadBus.mutilCastSend("global-message"+","+"---Client "+this.clientNumber+" đã thoát---");
             e.printStackTrace();
             e.printStackTrace();
         }
