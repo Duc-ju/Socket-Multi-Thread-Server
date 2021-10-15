@@ -30,7 +30,7 @@ public class ServerThreadBus {
         listServerThreads.add(serverThread);
     }
     
-    public void mutilCastSend(String message){
+    public void mutilCastSend(String message){ //like sockets.emit in socket.io
         for(ServerThread serverThread : Server.serverThreadBus.getListServerThreads()){
             try {
                 serverThread.getOs().write(message);
@@ -38,6 +38,22 @@ public class ServerThreadBus {
                 serverThread.getOs().flush();
             } catch (IOException ex) {
                 ex.printStackTrace();
+            }
+        }
+    }
+    
+    public void boardCast(int id, String message){
+        for(ServerThread serverThread : Server.serverThreadBus.getListServerThreads()){
+            if (serverThread.getClientNumber() == id) {
+                continue;
+            } else {
+                try {
+                    serverThread.getOs().write(message);
+                    serverThread.getOs().newLine();
+                    serverThread.getOs().flush();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
     }
