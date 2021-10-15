@@ -63,13 +63,7 @@ public class ServerThreadBus {
         for(ServerThread serverThread : threadbus){
             res+=serverThread.getClientNumber()+"-";
         }
-        for(ServerThread serverThread : threadbus){
-            try {
-                serverThread.write("update-online-list"+","+res);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
+        Server.serverThreadBus.mutilCastSend("update-online-list"+","+res);
     }
     public void sendMessageToPersion(int id, String message){
         for(ServerThread serverThread : Server.serverThreadBus.getListServerThreads()){
