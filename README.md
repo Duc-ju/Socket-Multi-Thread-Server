@@ -1,4 +1,4 @@
-# Chat app with socket using mutilthread and build by client/server model
+# Chat app with socket using mutilthread and built by client/server model
 There are two parts of this project.
 Link of client side https://github.com/Duc-ju/Socket-MutilThread-Client
 -----
